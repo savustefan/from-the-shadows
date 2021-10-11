@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url("main-img.jpg");
+}
+
+.title {
+
+    display: flex;
+    justify-content: center;
+    padding-top: 10rem;
+    height: 100%;
+    width: 100%;
+}
+
+.btn-middle {
+    display: flex;
+    height: 200px;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-evenly;
+    margin-right: 35%;
+    margin-left: 35%;
+}
+
+.btn {
+    font-size: 40px;
+    border-radius: 10px;
+    font-family: "Goudy Old Style";
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: antiquewhite;
+}
