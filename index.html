@@ -11,9 +11,14 @@
         <img src="https://fontmeme.com/permalink/211010/e7487900a2b147a2a7710d81ace722af.png" alt="old-english-fonts" border="0">
     </div>
     <div class="btn-middle">
-<button class="btn" id="start-btn" onclick="Start()">Start the Adventure</button>
-<button class="btn" id="instructions" onclick="HowToPlay()">How to play</button>
+        <button class="btn" onclick="PlayAudio()">Listen to the Prologue</button>
+        <button class="btn" id="start-btn" onclick="Start()">Start the Adventure</button>
+        <button class="btn" id="instructions" onclick="HowToPlay()">How to play</button>
     </div>
+
+    <audio id="PrologueAudio">
+        <source src="#" type="audio/mpeg">
+    </audio>
 
 <script src="script.js"></script>
 </body>
