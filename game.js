@@ -3,7 +3,7 @@
 function HowToPlay() {
     let HowToPlay = Swal.fire({
         title: "'It was the beginning of a very long education...' - Garret, The Thief",
-        imageUrl: 'Trainer.png',
+        imageUrl: 'trainer.png',
         imageAlt: 'Tutorial image',
         imageHeight: 250,
         text: "Welcome, young adventurer! I will instruct you the various skills you need to know before embarking on your quest.\n" +
