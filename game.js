@@ -25,8 +25,22 @@ function PlayAudio() {
     Audio.play()
 }
 
+
 /*Chapter 1*/
+
 function Start() {
+
+/*Caracter Setup*/
+    function Caracter (name, sneak, persuade) {
+        this.name = name;
+        this.sneak = sneak;
+        this.persuade = persuade;
+    }
+
+
+    let Hero = new Caracter("Thief", 5, 4)
+    //var hammerite = new Caracter("Hammerite, 4, 5)
+    //let pagan = new Caracter("Pagan", 6, 4) - to be further tested
 
 
     alert("Chapter 1: When light becomes shadow, fear the age of darkness - Pagan prayer")
@@ -43,13 +57,25 @@ function Start() {
     } else if (Clocktower === "B") {
         alert("{??}: I climbed over the rooftops and got to my hideout. It took a while, but nobody was here. On the table, there was a note\n" +
             "\t{Note}: Master Thief, we need your help. Come to St. John's Cathedral." +
-            "{??}: Keepers... Something tells me this ")
+            "{??}: Keepers... Something tells me this is not good.")
     }
+
+    /**------------------------------------------**/
 
 
     let HeroName = prompt("Master Thief, you are a sight for the sore eyes. Or should i call you... (What is the name of your character?)")
     let gender = prompt("What is the gender of your character? (Male, Female)")
     let race = prompt("What is your race? (Human, Elf, Tiefling")
+
+
+    if (race === "Human") {
+        Hero.persuade--;
+    } else if (race === `Elf`) {
+        Hero.sneak++;
+    } else if (race === "Tierfling") {
+        Hero.sneak++;
+        Hero.persuade++;
+    }
 
     /**------------------------------------------**/
 
@@ -65,10 +91,10 @@ function Start() {
     if (background === "Scholar") {
         alert("(Scholar Perk - The First Sin): That book contains secrets of the Glyphs, including their location and how nullifies Pagan magic. This is bad...")
     } else if (background === "Knight" || background === "Bard") {
-        alert("I suspect a substantial reward.")
+        alert(HeroName +": I suspect a substantial reward.")
     }
 
-    alert("Keeper Marthus: I will take the quest then.")
+    alert("Keeper Marthus: You will take the quest then.")
 
 
     if (Clocktower === "A" && background === "Bard") {
@@ -76,24 +102,35 @@ function Start() {
     }
 
     alert("Achievement unlocked! 2 Minutes to Midnight - Finish Chapter 1")
+
+
     /*Chapter 2*/
 
-    alert("Chapter 2\n" +
-        "The Hammer is the most blessed of all the Builder's works: ‘Tis both a tool for building, and a weapon against thy foes. - The Hammer Book of Lessons")
+    alert("Chapter 2\n\n" +
+        "'The Hammer is the most blessed of all the Builder's works: ‘Tis both a tool for building, and a weapon against thy foes.' - The Hammer Book of Lessons")
     alert(HeroName + ": Those Keepers said something that Pagans will have special artifacts that I need to destroy to prevent them from using the book's power. It's Hammer time!")
-    alert("*You arrived at the Hammerite's Cathedal*\n" +
-
+    alert("*You arrived at the Hammerite's Cathedal*\n\n" +
            HeroName +": Here we are. That 'holy' thing must be somewhere in there. Hmm...")
     if (race === "Elf" && background === "Bard") {
-        alert("(Ability activated - Whisper Ways) *footsteps*\n" +
+        alert("(Ability activated - Whisper Ways) *footsteps*\n\n" +
 
             "{Hammerite Guard 1}: Shall we gather for whisky and cigars tonight?\n" +
             "{Hammerite Guard 2}: Are you kidding? We need to keep watch on The Builder's Hammer. Those Pagans may attack anytime.\n" +
             "{Hammerite Guard 1}: Oh, yeah. They moved it to the Master Forger's Quarters.\n" +
             "{Hammerite Guard 2}: SHHHHHHH, IDIOT! You don't know who could listen from the shadows.")
-        alert(HeroName + ": Only 1 guard at the entrance. This should be pretty easy. A - Sneak past the guard and go inside/ B - Knock him out with your trusty Blackjack")
+        var guard = prompt(HeroName + ": Only 1 guard at the entrance. This should be pretty easy.\n\n" +
+            "A - Sneak past the guard and go inside" +
+            "B - Knock him out with your trusty Blackjack")
+
     } else if (race === "Human", "Tierfling"){
-        alert(HeroName + ": Only 1 guard at the entrance. This should be pretty easy. A - Sneak past the guard and go inside/ B - Persuade the guard to tell you about the Hammer's location")
+        let entrance = prompt(HeroName + ": Only 1 guard at the entrance. This should be pretty easy.\n\n" +
+            "A - Sneak past the guard and go inside" +
+            "B - Persuade the guard to tell you about the Hammer's location")
     }
-    
+    if (guard === "A" && Hero.sneak >= 6) {
+        alert("Succes")
+    } else if (guard === "A" && Hero.sneak < 7){
+                alert("Fail")
+    }
 }
+
