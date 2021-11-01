@@ -2,7 +2,7 @@
 
 function HowToPlay() {
     let HowToPlay = Swal.fire({
-        title: "'It was the beginning of a very long education...' - Garret, The Thief",
+        title: "'It was the beginning of a very long education...' - Garrett, The Thief",
         imageUrl: 'trainer.png',
         imageAlt: 'Tutorial image',
         imageHeight: 250,
@@ -39,9 +39,8 @@ function Start() {
     }
 
 
-    let Hero = new Character("Thief", 5, 4, 0)
-    //let hammerite = new Character("Hammerite, 4, 5,)
-    //let pagan = new Character("Pagan", 6, 4) - to be further tested
+    let Hero = new Character("Thief", 5, 5, 0)
+    let hammerite = new Character("Hammerite", 6, 5, 0)
 
 
     alert("Chapter 1\n\n" +
@@ -72,8 +71,9 @@ function Start() {
 
     if (race === "Human") {
         Hero.persuade--;
+        Hero.sneak--;
     } else if (race === `Elf`) {
-        Hero.notoriety--;
+        Hero.notoriety++;
         Hero.sneak++;
     } else if (race === "Tierfling") {
         Hero.sneak++;
@@ -107,7 +107,7 @@ function Start() {
 
     alert("Achievement unlocked! 2 Minutes to Midnight - Finish Chapter 1")
 
-    
+
 
     /*Chapter 2*/
 
@@ -138,14 +138,14 @@ function Start() {
        alert("*You knock down the guard with your trusty Blackjack, then enter the Cathedral*")
     }
 
-    if (guard || entrance === "A" && Hero.sneak >= 6) {
+    if (guard || entrance === "A" && Hero.sneak >= hammerite.sneak) {
         alert("*You sneaked past the guard and entered the Cathedral*")
-    } else if (guard || entrance === "A" && Hero.sneak < 7){
+    } else if (guard || entrance === "A" && Hero.sneak < hammerite.sneak){
         Hero.notoriety++;
         alert("*The guard notices you, but you managed to escape and entered the Cathedral. Stick to the shadows...*")
     }
 
-    if (entrance === "B" && Hero.persuade >=7){
+    if (entrance === "B" && Hero.persuade > hammerite.persuade){
         alert("*You grab the guard from behind with your knife against his neck\n\n" +
               HeroName + ": Tell me where you keep your so-called holy relic\n" +
               "Hammerite Guard: I will never you. The Builder's Hammer is a sacred thing; not fit for an apostle like you")
@@ -153,7 +153,7 @@ function Start() {
                "Hammerite Guard: OKAY, OKAY! May St. Edgar watch over me! The Hammer is in the Master Forge.\n" +
                 HeroName + ": See, it was that easy. Now good night\n\n" +
                 "*You knock down the guard with your trusty Blackjack")
-    } else if (entrance === "B" && Hero.persuade <=7){
+    } else if (entrance === "B" && Hero.persuade < hammerite.persuade){
         alert("*You grab the guard from behind with your knife against his neck\n\n" +
             HeroName + ": Tell me where you keep your so-called holy relic\n" +
             "Hammerite Guard: I will never you. The Builder's Hammer is a sacred thing; not fit for an apostle like you")
@@ -167,17 +167,92 @@ function Start() {
     alert("*You entered the Cathedral and gone straight for the Hammer*")
     alert("Achievement unlocked! Hammer Time! - Finish Chapter 2")
 
+    /*Chapter 3*/
+
     alert("Chapter 3\n\n" +
         "'There is nothing as promising as the opening of a book. There is nothing as final as its shutting. - Keeper Scribe Lessons, Part 4'")
     alert(HeroName + ": *After retrieving the Hammer, I enter pagan's territory via an old library...*")
 
     if (background === "Scholar" || race === "Tierfling"){
-        alert("So many books... *but one particularly caught my attention; Keeper Book of Truths.* 'There are glyphs that can cause suffering and those that can end it...and precious few who know the difference'." +
+        alert(HeroName + ": So many books... *but one particularly caught my attention; Keeper Book of Truths.* 'There are glyphs that can cause suffering and those that can end it...and precious few who know the difference'." +
             "Huh, those glyphs imprisons their magic; their way of life. I will need to made a choice...* ")
     } else if (background === "Knight" || background === "Bard"){
-        alert("*and, with Blackjack in my hand, I was ready to put a stop to this.*")
+        alert(HeroName + ": *and, with Blackjack in my hand, I was ready to put a stop to this.*")
     }
-    
 
+    alert("*Entering an old ruin, you see strange markings on the wall... Down a long corridor you see a chamber with strange artifacts*")
+    var ending = prompt(HeroName + ": This must be it. Now I will...\n" +
+        "A - Destroy the artifacts" +
+        "B - Leave Pagans have thief fun; this is not your battle")
+
+    if (ending === "A"){
+        alert("*Begins to snow when you return back to 'The City'. Everything is peaceful, silence in the night...*\n" +
+            HeroName + ": Huh, Keepers... Time I get my cut." +
+            "{??}: And you should have it. But do you think you have won?" +
+            HeroName + ":If you haven't noticed I just saved the world." +
+            "{??}: As we knew you would, as it had to be." +
+            HeroName + ":Now I remember why I hate doing jobs for Keepers." +
+            "{??}: And I remember why we turn a blind eye to your misdeeds." +
+            HeroName + ":What do you want from me now? To join your little cult?" +
+            "{??}: Very well, I'l speak my mind; you have accomplished that It was written, and yes... You've done it well. You don't belong to us, yet you will have great need for us." +
+            HeroName + ":I don't think so, I'm done with relics, and with your kind as well." +
+            "{??}: You cannot run from life as you did with us, Garrett. Life has a way of finding you, sooner rather than later, no mather you great at sneaking you are. Listen, there is a book you aren't aware of. I tell you, it would be wise to read it now." +
+            HeroName + ":You, Keepers, and all your books..." +
+            "{??}: You have more friends than you know." +
+            HeroName + ":Tell them I don't need any books, glyph or anything at all. Tell them I'm done. Tell them it's over; Garrett is done." +
+            "{??}: I will tell them this: nothing is changed, all it is as it was written. The Pagans are gone, beware the dawn of The Metal Age...")
+    } else if (ending === "A" && background === "Scholar" || race === "Tiefling"){
+        alert("*Begins to snow when you return back to 'The City'. Everything is peaceful, silence in the night...*\n" +
+            HeroName + ": Huh, Keepers... Time I get my cut." +
+            "{??}: And you should have it. But do you think you have won?" +
+            HeroName + ":If you haven't noticed I just saved the world." +
+            "{??}: As we knew you would, as it had to be." +
+            HeroName + ":Now I remember why I hate doing jobs for Keepers." +
+            "{??}: And I remember why we turn a blind eye to your misdeeds." +
+            HeroName + ":What do you want from me now? To join your little cult?" +
+            "{??}: Very well, I'l speak my mind; you have accomplished that It was written, and yes... You've done it well. You don't belong to us, yet you will have great need for us." +
+            HeroName + ":I don't think so, I'm done with relics, and with your kind as well." +
+            "{??}: You cannot run from life as you did with us, Garrett. Life has a way of finding you, sooner rather than later, no mather you great at sneaking you are. Listen, there is a book you aren't aware of. I tell you, it would be wise to read it now." +
+            HeroName + ":I find it in the library. I know what you planned to do from the start; to create a era, a new age, that of metal and destroy the old ways. I did just that, you used me as your pawn, now tell your Keeper friends I'm done. Tell them it's over; Garrett is done." +
+            "{??}: Very well, Garrett. You services had been terminated and your task completed. You served a great cause. Now, goodbye...")
+    } else if (ending === "B" && Hero.notoriety >= 2){
+        alert(HeroName + ": *I found more than I bargained for. I didn't want to leave these precious relics on the hands of Pagans. Maybe the Keeper have gold, but these would sell well enough on the black market to make me rich for life.*" +
+            "*Begins to snow when you return back to 'The City'.... On the road, you see corpses of the City guard, Pagans and Hammerites..." +
+            HeroName + ": Huh, they fought until the last one. Their blood painted the Old Quarter red." +
+            "{??}: This was not our deal." +
+            HeroName + ":I thought I told you, I don't like being followed." +
+            "{??}: And I thought you were told you to destroy the artifacts, not steal them" +
+            HeroName + ":Plans have changed. I was a " + background + ", but those days are long gone. What did you expected from a thief, anyway?" +
+            "{??}: I was wrong, to... to trust in you; you haven't changed a bit. You just disobeyed the scriptures. They will come for you, you know, no matter how good you are at sneaking." +
+            HeroName + ": Tell your friends I can't wait to met them. See ya around... Keeper.")
+    } else if (ending === "B"){
+        alert("*Begins to snow when you return back to 'The City'.... On the road, you see corpses of the City guard, Pagans and Hammerites..." +
+            HeroName + ": Huh, they fought until the last one. Their blood painted the Old Quarter red." +
+            "{??}: This was not our deal." +
+            HeroName + ":I thought I told you, I don't like being followed." +
+            "{??}: And I thought you were told you to destroy the artifacts" +
+            HeroName + ": I got tired of being a good little servant. I always hatted the Keeper." +
+            "{??}: You know you won't get payed, right?" +
+            HeroName + ": I'm a thief, remember. Stealing from Keeper is more fun than going destroy some old relics." +
+            "{??}: The creation of Metal Age would be impossible now, it's all your fault. If you get caught, they will kill you on sight." +
+            HeroName + "I will take my chances. I prefer shadows anyway. And I don't want to see you ever again..." +
+            "{??}: Very well, my friend...")
     }
+
+    alert("Achievement unlocked! A dawn of a new era - Finish the game")
+    alert("Thank you for playing! I hope you enjoyed it. <3")
+    
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
